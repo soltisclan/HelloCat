@@ -1,6 +1,6 @@
-var http = require('http'),
+var http = require('http')/*,
     fileSystem = require('fs'),
-    path = require('path');
+    path = require('path')*/;
 http.createServer(reqprocessor).listen(8080);
 
 function reqprocessor(req, res) {
