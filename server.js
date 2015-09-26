@@ -5,7 +5,7 @@ http.createServer(reqprocessor).listen(8080);
 
 function reqprocessor(req, res) {
     console.log('Got request for ' + req.url);
-    if (req.url == '/favicon.ico')
+    if (req.url == '/favicon.icoz')
     {
         var filePath = path.join(__dirname, 'favicon.ico');
         var stat = fileSystem.statSync(filePath);
