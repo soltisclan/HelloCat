@@ -1,7 +1,7 @@
 var http = require('http'),
     fileSystem = require('fs'),
     path = require('path');
-http.createServer(reqprocessor).listen(process.env.PORT);
+http.createServer(reqprocessor).listen(process.env.PORT || 8080);
 
 function reqprocessor(req, res) {
     console.log('Got request for ' + req.url);
