@@ -1,11 +1,11 @@
-var http = require('http')/*,
+var http = require('http'),
     fileSystem = require('fs'),
-    path = require('path')*/;
-http.createServer(reqprocessor).listen(8080);
+    path = require('path');
+http.createServer(reqprocessor).listen(process.env.PORT);
 
 function reqprocessor(req, res) {
     console.log('Got request for ' + req.url);
-    if (req.url == '/favicon.icoz')
+    if (req.url == '/favicon.ico')
     {
         var filePath = path.join(__dirname, 'favicon.ico');
         var stat = fileSystem.statSync(filePath);
