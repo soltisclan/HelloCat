@@ -1,24 +1,14 @@
 var http = require('http'),
+    express = require('express'),
+    app = express(),
     fileSystem = require('fs'),
     path = require('path');
-http.createServer(reqprocessor).listen(process.env.PORT || 8080);
 
-function reqprocessor(req, res) {
-    console.log('Got request for ' + req.url);
-    if (req.url == '/favicon.ico')
-    {
-        var filePath = path.join(__dirname, 'favicon.ico');
-        var stat = fileSystem.statSync(filePath);
-        res.writeHead(200, {
-            'Content-Type': 'image/x-icon',
-            'Content-Length': stat.size
-        });
+app.get('/',reqprocessor_ex);
+app.use(express.static('public'));
 
-        var readStream = fileSystem.createReadStream(filePath);
-        // We replaced all the event handlers with a simple call to readStream.pipe()
-        readStream.pipe(res);
-    } else {
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        res.end('<h1>Hello Cat and Azure Web Apps!</h1>');    
-    }
-}
+function reqprocessor_ex(req,res){
+    res.send('<h3>Hail Cats!</h3>');
+}   
+
+var server = app.listen(process.env.PORT || 8080);
